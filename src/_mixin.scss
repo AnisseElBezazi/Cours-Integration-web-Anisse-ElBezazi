@@ -1,0 +1,103 @@
+$gradient: linear-gradient(136deg, rgb(182 113 248), #e780b5);
+$pc: 1400px;
+$tablet: 1000px;
+$mobile: 700px;
+$BigScreen: 2000px;
+
+@mixin Smaller($taille) {
+  @media (width <= $taille) {
+    @content;
+  }
+}
+
+@mixin Bigger($taille) {
+  @media (width > $taille) {
+    @content;
+  }
+}
+
+@mixin ImportFont($url, $name) {
+  @font-face {
+    font-family: $name;
+    src: url($url);
+  }
+}
+@mixin Title($size) {
+  font-size: $size;
+  font-family: PoppinsSemiBold;
+  @include Bigger($mobile) {
+    font-size: 1.5 * $size;
+  }
+}
+
+@mixin BoutonPrincipal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $gradient;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: white;
+
+  font-size: 0.8rem;
+  font-family: PoppinsMedium;
+  @include Bigger($mobile) {
+    font-size: 1.5 * 0.8rem;
+  }
+}
+@mixin absolute($top, $left, $right, $bottom, $z) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+  z-index: $z;
+}
+
+@mixin BoutonSecondaire {
+  color: black;
+  padding: 10px 20px;
+  border-radius: 4px;
+  background: #faf4fb;
+  position: relative;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  font-family: PoppinsMedium;
+  &::before {
+    content: "";
+    @include absolute(-2px, -2px, -2px, -2px, -1);
+    border-radius: 6px;
+    background: $gradient;
+  }
+}
+
+@mixin flexCenter($gap) {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: $gap;
+}
+@mixin flexColumn($gap, $center) {
+  display: flex;
+  flex-direction: column;
+  align-items: $center;
+  gap: $gap;
+}
+
+@mixin description($color) {
+  font-size: 0.7rem;
+  font-family: PoppinsMedium;
+  color: $color;
+  line-height: 1.7;
+  @include Bigger($mobile) {
+    font-size: 1.5 * 0.7rem;
+  }
+}
+
+@mixin gradientText {
+  background: $gradient;
+  background-clip: text;
+  color: transparent;
+}
+@mixin RechercheBar {
+}

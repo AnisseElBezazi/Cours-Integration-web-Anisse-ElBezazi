@@ -1,0 +1,690 @@
+@use "./mixin" as *;
+
+@include ImportFont("../Fonts/Poppins-Medium.ttf", PoppinsMedium);
+@include ImportFont("../Fonts/Poppins-Black.ttf", PoppinsBlack);
+@include ImportFont("../Fonts/Poppins-Bold.ttf", PoppinsBold);
+@include ImportFont("../Fonts/Poppins-Regular.ttf", PoppinsRegular);
+@include ImportFont("../Fonts/Poppins-SemiBold.ttf", PoppinsSemiBold);
+
+body {
+  background-color: #faf4fb;
+  zoom: 1;
+  @include Bigger($BigScreen) {
+    zoom: 1.5; //C'est le seul zoom que j'utilise dans tout le code car j'ai faile responsive seulement de 1440px a 320px :)
+  }
+}
+.header {
+  margin: 10px 20px;
+  font-family: PoppinsMedium;
+  font-size: 1.3rem;
+  @include flexCenter(30px);
+  justify-content: space-between;
+  @include Bigger($tablet) {
+    margin: 30px 50px;
+  }
+  @include Bigger($pc) {
+    margin: 30px 200px;
+  }
+
+  .logo {
+    font-family: PoppinsBold;
+    font-size: 2rem;
+  }
+  .liste {
+    display: none;
+    @include Bigger($tablet) {
+      @include flexCenter(30px);
+    }
+
+    .link {
+      @include flexCenter(5px);
+    }
+    & img {
+      width: 14px;
+    }
+  }
+  .bouton-connexion {
+    display: none;
+    @include Bigger($tablet) {
+      display: flex;
+      gap: 30px;
+    }
+
+    .button-Primary {
+      @include BoutonPrincipal;
+    }
+    .button-secondary {
+      @include BoutonSecondaire;
+    }
+  }
+  .menu-burger {
+    @include flexColumn(5px, center);
+    @include Bigger($tablet) {
+      display: none;
+    }
+    .trait {
+      width: 30px;
+      background: black;
+      height: 3px;
+    }
+  }
+}
+
+.hero {
+  margin: 10px 40px 0px 40px;
+  @include flexColumn(30px, center);
+
+  @include Bigger($tablet) {
+    display: flex;
+    flex-direction: row;
+    margin: 30px 50px 0px 50px;
+  }
+  @include Bigger($pc) {
+    margin: 30px 200px 0px 200px;
+  }
+
+  .gauche-hero {
+    @include flexColumn(30px, center);
+    margin: 60px 0px;
+    text-align: center;
+    @include Bigger($tablet) {
+      max-width: 50%;
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    .title {
+      display: flex;
+      @include Title(2.1rem);
+    }
+    .description {
+      @include description(#767376);
+    }
+    .links {
+      @include flexCenter(30px);
+
+      .button-Primary {
+        @include BoutonPrincipal;
+        font-family: PoppinsMedium;
+      }
+      .link {
+        @include flexCenter(5px);
+        @include Bigger($mobile) {
+          font-size: 1.5 * 1rem;
+        }
+        font-family: PoppinsRegular;
+        text-decoration: underline;
+        white-space: nowrap;
+      }
+      & img {
+        width: 20px;
+      }
+    }
+  }
+  .droite-hero {
+    @include Bigger($tablet) {
+      width: 50%;
+    }
+  }
+  .droite-hero img {
+    width: 100%;
+  }
+}
+
+.sponsors {
+  @include flexCenter(20px);
+  padding: 20px 0px;
+  background: $gradient;
+  @include Bigger($tablet) {
+    gap: 60px;
+    padding: 30px 50px;
+  }
+  @include Bigger($pc) {
+    padding: 40px 200px;
+  }
+
+  & img {
+    width: 100%;
+  }
+}
+
+.Search-Courses {
+  @include flexColumn(30px, center);
+  margin: 20px 40px 0px 40px;
+  @include Bigger($tablet) {
+    margin: 80px 50px 0px 50px;
+  }
+
+  @include Bigger($pc) {
+    margin: 80px 200px 0px 200px;
+  }
+
+  justify-content: center;
+  .title {
+    @include Title(1rem);
+  }
+
+  .container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    .RechercheBar {
+      @include flexCenter(20px);
+      background-color: white;
+      width: fit-content;
+      border-radius: 6px;
+      padding: 5px 10px 5px 10px;
+      font-family: PoppinsMedium;
+      & input {
+        width: 300px;
+      }
+      & img {
+        width: 2rem;
+      }
+    }
+    .button-Primary {
+      @include BoutonPrincipal;
+      @include Title(1rem);
+    }
+  }
+}
+
+.benefits {
+  @include flexColumn(20px, center);
+  margin: 30px 20px 30px 20px;
+  @include Bigger($tablet) {
+    flex-direction: row;
+    margin: 80px 50px;
+  }
+
+  @include Bigger($pc) {
+    margin: 80px 200px;
+  }
+  .gauche-benefits {
+    width: 100%;
+    @include Bigger($tablet) {
+      width: 80%;
+    }
+    & img {
+      width: 100%;
+    }
+  }
+  .droite-benefits {
+    @include flexColumn(10px, flex-start);
+    margin-left: 30px;
+
+    > .title {
+      @include Title(1.3rem);
+      .gradient {
+        @include gradientText();
+      }
+    }
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+
+      .purple {
+        background-color: rgb(182 113 248);
+      }
+      .pink {
+        background-color: #e780b5;
+      }
+
+      .gauche-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 9999px;
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+
+        & img {
+          height: 37px;
+          aspect-ratio: 3/3;
+        }
+      }
+      .droite-card {
+        @include flexColumn(10px, flex-start);
+        .title {
+          @include Title(1rem);
+        }
+        .description {
+          @include description(#767376);
+        }
+      }
+    }
+  }
+}
+
+.Popular-Courses {
+  @include flexColumn(20px, center);
+  padding: 50px 40px 50px 40px;
+  background: $gradient;
+  @include Bigger($tablet) {
+    padding: 80px 50px;
+  }
+
+  @include Bigger($pc) {
+    padding: 80px 200px;
+  }
+  .title {
+    @include Title(1.3rem);
+    color: white;
+  }
+  .description {
+    @include description(white);
+    text-align: center;
+    @include Bigger($tablet) {
+      max-width: 70%;
+    }
+  }
+  .container-card {
+    @include flexColumn(20px, flex-start);
+
+    margin-top: 30px;
+    @include Bigger($tablet) {
+      gap: 30px;
+      flex-direction: row;
+    }
+    .card {
+      @include flexColumn(20px, flex-start);
+      background: white;
+      padding: 8px;
+      width: 100%;
+      border-radius: 28px;
+      & > img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+        aspect-ratio: 4/3;
+      }
+      .tags {
+        @include flexCenter(5px);
+        justify-content: space-between;
+        width: 100%;
+        padding: 0px 3px;
+        font-family: PoppinsRegular;
+        .work {
+          @include flexCenter(10px);
+          @include Bigger($tablet) {
+            font-size: 1rem;
+          }
+          background: rgb(233 210 255);
+          padding: 5px 10px;
+          gap: 10px;
+          border-radius: 6px;
+          .point {
+            padding: 4px;
+            border-radius: 99999px;
+            background: rgb(171 108 225);
+          }
+        }
+        .notes {
+          @include flexCenter(5px);
+          @include Bigger($tablet) {
+            font-size: 1rem;
+          }
+          background: #b672ffc0;
+          padding: 5px 10px;
+          border-radius: 4px;
+          color: white;
+          & img {
+            width: 15px;
+            gap: 5px;
+          }
+        }
+      }
+      .title {
+        @include Title(1rem);
+        color: rgb(0, 0, 0);
+        max-width: 50%;
+        padding-left: 3px;
+      }
+      .info {
+        display: flex;
+        padding: 0px 3px;
+        gap: 20px;
+        position: relative;
+        width: 100%;
+        &::after {
+          content: "";
+          @include absolute(40px, 3px, 3px, 0, 2);
+          border-bottom: 1px solid #767376;
+        }
+
+        & img {
+          width: 30px;
+          aspect-ratio: 3/3;
+        }
+        .sous-info {
+          display: flex;
+          gap: 5px;
+        }
+      }
+      .layout {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 3px;
+        width: 100%;
+        .price {
+          @include Title(1rem);
+        }
+        .profil {
+          display: flex;
+          font-family: PoppinsRegular;
+          color: #b672ffc0;
+          gap: 10px;
+
+          & img {
+            width: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.instructor {
+  @include flexColumn(20px, center);
+
+  margin: 50px 20px;
+  @include Bigger($tablet) {
+    margin: 80px 50px;
+    flex-direction: row;
+  }
+
+  @include Bigger($pc) {
+    margin: 80px 200px;
+  }
+  .gauche-instructor {
+    @include flexColumn(20px, flex-start);
+    width: 100%;
+    @include Bigger($tablet) {
+      width: 70%;
+    }
+
+    .title {
+      @include Title(1.3rem);
+      .gradient {
+        @include gradientText;
+      }
+    }
+    .description {
+      @include description(#767376);
+      max-width: 100%;
+      @include Bigger($tablet) {
+        max-width: 70%;
+      }
+    }
+    .listes {
+      @include flexCenter(30px);
+      margin-left: 25px;
+      .liste {
+        @include description(black);
+        .item {
+          position: relative;
+          &::before {
+            content: "";
+            @include absolute(50%, -20px, 0px, 0px, 1);
+            padding: 4px;
+            border-radius: 99999px;
+            background: rgb(171 108 225);
+            height: 4px;
+            width: 4px;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+    .button-Primary {
+      @include BoutonPrincipal();
+
+      width: fit-content;
+    }
+  }
+
+  .droite-instructor {
+    width: 50%;
+    & img {
+      width: 100%;
+    }
+  }
+}
+.background {
+  background: linear-gradient(
+    160deg,
+    rgb(182 113 248),
+    #e780b5,
+    rgb(182 113 248)
+  );
+  .testimonials {
+    @include flexColumn(30px, center);
+
+    padding: 80px 20px 0px 20px;
+    @include Bigger($tablet) {
+      padding: 80px 50px;
+    }
+
+    @include Bigger($pc) {
+      padding: 80px 200px 50px 200px;
+    }
+    .title {
+      @include Title(1.3rem);
+      color: white;
+    }
+    > .description {
+      @include description(white);
+      text-align: center;
+
+      @include Bigger($tablet) {
+        max-width: 58%;
+      }
+    }
+    .container-card {
+      @include flexColumn(30px, center);
+      @include Bigger($tablet) {
+        flex-direction: row;
+      }
+      .card {
+        @include flexColumn(20px, left);
+        flex: 1;
+        background: white;
+        padding: 20px;
+        border-radius: 16px;
+
+        .top-card {
+          @include flexCenter(20px);
+          & img {
+            width: 50px;
+          }
+          .notes {
+            @include flexCenter(20px);
+            & img {
+              width: 50px;
+            }
+          }
+          .top-right-card {
+            @include flexColumn(5px, flex-start);
+            .name {
+              font-size: 1rem;
+              font-family: PoppinsSemiBold;
+              color: rgb(182 113 248);
+            }
+            .work {
+              font-size: 0.8rem;
+              font-family: PoppinsRegular;
+            }
+          }
+        }
+        .description {
+          @include description(grey);
+          line-height: 1;
+        }
+      }
+    }
+    .slider {
+      @include flexCenter(20px);
+      margin: 40px;
+      & img {
+        width: 20px;
+      }
+      .fleche-gauche {
+        transform: rotate(180deg);
+      }
+      .num-page {
+        @include description(white);
+      }
+    }
+  }
+
+  .abonnement {
+    @include flexColumn(0px, center);
+    .fond-blanc {
+      background: #faf4fb;
+      width: 100%;
+      border-radius: 70px 0px 70px 0px;
+      padding: 50px 0px;
+      @include flexColumn(5px, center);
+      @include Bigger($tablet) {
+        padding: 80px 0px;
+        border-radius: 140px 0px 140px 0px;
+      }
+      .container {
+        @include flexColumn(0px, center);
+        width: 90%;
+        padding: 30px 40px;
+        background: $gradient;
+        border-radius: 24px;
+        @include Bigger($tablet) {
+          width: 50%;
+          padding: 30px 80px;
+        }
+        .title {
+          @include Title(1.3rem);
+          color: white;
+        }
+        .description {
+          @include description(white);
+          text-align: center;
+          max-width: 85%;
+        }
+        .mail {
+          margin-top: 20px;
+          @include flexCenter(20px);
+          justify-content: center;
+          width: 100%;
+
+          .mail-input {
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            width: 70%;
+            font-family: PoppinsRegular;
+            font-size: 0.8rem;
+            @include Bigger($tablet) {
+              font-size: 1rem;
+            }
+          }
+          .bouton-subscribe {
+            @include flexCenter(0px);
+            justify-content: center;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            .text-bouton {
+              @include gradientText();
+              @include Title(0.6rem);
+              min-width: fit-content;
+              @include Bigger($tablet) {
+                @include Title(0.8rem);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.footer {
+  @include flexCenter(10px);
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 10px 20px 10px;
+  @include Bigger($tablet) {
+    padding: 80px 20px 40px 20px;
+    gap: 80px;
+  }
+  @include Bigger($pc) {
+    padding: 80px 200px 40px 200px;
+  }
+  .gauche-footer {
+    @include flexColumn(10px, flex-start);
+    max-width: 20%;
+
+    .logo {
+      font-family: PoppinsBold;
+      font-size: 2rem;
+      font-size: 1rem;
+      color: white;
+    }
+    .description {
+      @include description(white);
+      font-family: PoppinsRegular;
+      font-size: 0.5rem;
+      @include Bigger($mobile) {
+        font-size: 0.8rem;
+        @include Bigger($tablet) {
+          font-size: 1rem;
+        }
+      }
+    }
+    .container-img {
+      width: 50px;
+      display: flex;
+      height: 20px;
+      display: flex;
+      gap: 10px;
+      @include Bigger($tablet) {
+        width: 100px;
+        height: 40px;
+      }
+      & img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  .listes {
+    @include flexColumn(5px, flex-start);
+    .title {
+      @include Title(1rem);
+      color: white;
+      font-size: 0.8rem;
+      @include Bigger($mobile) {
+        font-size: 1rem;
+        @include Bigger($tablet) {
+          font-size: 1.3rem;
+        }
+      }
+    }
+    .item {
+      @include description(white);
+      font-family: PoppinsRegular;
+      font-size: 0.5rem;
+      @include Bigger($mobile) {
+        font-size: 0.8rem;
+        @include Bigger($tablet) {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+//Le responsive de 1440px a 320px a été fait.
