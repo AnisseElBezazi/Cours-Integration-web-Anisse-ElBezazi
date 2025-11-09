@@ -1,8 +1,14 @@
-$gradient: linear-gradient(136deg, rgb(182 113 248), #e780b5);
+$primary: rgb(182 113 248);
+$secondary: #e780b5;
+$gradient: linear-gradient(136deg, $primary, $secondary);
 $pc: 1400px;
 $tablet: 1000px;
 $mobile: 700px;
 $BigScreen: 2000px;
+$textGrey: #767376;
+
+$gap20: 20px;
+$gap30: 30px;
 
 @mixin Smaller($taille) {
   @media (width <= $taille) {

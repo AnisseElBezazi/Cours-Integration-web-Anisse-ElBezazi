@@ -17,7 +17,7 @@ body {
   margin: 10px 20px;
   font-family: PoppinsMedium;
   font-size: 1.3rem;
-  @include flexCenter(30px);
+  @include flexCenter($gap30);
   justify-content: space-between;
   @include Bigger($tablet) {
     margin: 30px 50px;
@@ -33,7 +33,7 @@ body {
   .liste {
     display: none;
     @include Bigger($tablet) {
-      @include flexCenter(30px);
+      @include flexCenter($gap30);
     }
 
     .link {
@@ -47,7 +47,7 @@ body {
     display: none;
     @include Bigger($tablet) {
       display: flex;
-      gap: 30px;
+      gap: $gap30;
     }
 
     .button-Primary {
@@ -72,7 +72,7 @@ body {
 
 .hero {
   margin: 10px 40px 0px 40px;
-  @include flexColumn(30px, center);
+  @include flexColumn($gap30, center);
 
   @include Bigger($tablet) {
     display: flex;
@@ -84,7 +84,7 @@ body {
   }
 
   .gauche-hero {
-    @include flexColumn(30px, center);
+    @include flexColumn($gap30, center);
     margin: 60px 0px;
     text-align: center;
     @include Bigger($tablet) {
@@ -98,10 +98,10 @@ body {
       @include Title(2.1rem);
     }
     .description {
-      @include description(#767376);
+      @include description($textGrey);
     }
     .links {
-      @include flexCenter(30px);
+      @include flexCenter($gap30);
 
       .button-Primary {
         @include BoutonPrincipal;
@@ -132,7 +132,7 @@ body {
 }
 
 .sponsors {
-  @include flexCenter(20px);
+  @include flexCenter($gap20);
   padding: 20px 0px;
   background: $gradient;
   @include Bigger($tablet) {
@@ -149,7 +149,7 @@ body {
 }
 
 .Search-Courses {
-  @include flexColumn(30px, center);
+  @include flexColumn($gap30, center);
   margin: 20px 40px 0px 40px;
   @include Bigger($tablet) {
     margin: 80px 50px 0px 50px;
@@ -166,11 +166,11 @@ body {
 
   .container {
     display: flex;
-    gap: 20px;
+    gap: $gap20;
     width: 100%;
     justify-content: center;
     .RechercheBar {
-      @include flexCenter(20px);
+      @include flexCenter($gap20);
       background-color: white;
       width: fit-content;
       border-radius: 6px;
@@ -191,7 +191,7 @@ body {
 }
 
 .benefits {
-  @include flexColumn(20px, center);
+  @include flexColumn($gap20, center);
   margin: 30px 20px 30px 20px;
   @include Bigger($tablet) {
     flex-direction: row;
@@ -223,14 +223,14 @@ body {
     .card {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: $gap20;
       margin-top: 20px;
 
       .purple {
-        background-color: rgb(182 113 248);
+        background-color: $primary;
       }
       .pink {
-        background-color: #e780b5;
+        background-color: $secondary;
       }
 
       .gauche-card {
@@ -253,7 +253,7 @@ body {
           @include Title(1rem);
         }
         .description {
-          @include description(#767376);
+          @include description($textGrey);
         }
       }
     }
@@ -261,7 +261,7 @@ body {
 }
 
 .Popular-Courses {
-  @include flexColumn(20px, center);
+  @include flexColumn($gap20, center);
   padding: 50px 40px 50px 40px;
   background: $gradient;
   @include Bigger($tablet) {
@@ -283,15 +283,15 @@ body {
     }
   }
   .container-card {
-    @include flexColumn(20px, flex-start);
+    @include flexColumn($gap20, flex-start);
 
     margin-top: 30px;
     @include Bigger($tablet) {
-      gap: 30px;
+      gap: $gap30;
       flex-direction: row;
     }
     .card {
-      @include flexColumn(20px, flex-start);
+      @include flexColumn($gap20, flex-start);
       background: white;
       padding: 8px;
       width: 100%;
@@ -320,7 +320,7 @@ body {
           .point {
             padding: 4px;
             border-radius: 99999px;
-            background: rgb(171 108 225);
+            background: $primary;
           }
         }
         .notes {
@@ -328,7 +328,7 @@ body {
           @include Bigger($tablet) {
             font-size: 1rem;
           }
-          background: #b672ffc0;
+          background: $primary;
           padding: 5px 10px;
           border-radius: 4px;
           color: white;
@@ -347,13 +347,13 @@ body {
       .info {
         display: flex;
         padding: 0px 3px;
-        gap: 20px;
+        gap: $gap20;
         position: relative;
         width: 100%;
         &::after {
           content: "";
           @include absolute(40px, 3px, 3px, 0, 2);
-          border-bottom: 1px solid #767376;
+          border-bottom: 1px solid $textGrey;
         }
 
         & img {
@@ -376,7 +376,7 @@ body {
         .profil {
           display: flex;
           font-family: PoppinsRegular;
-          color: #b672ffc0;
+          color: $primary;
           gap: 10px;
 
           & img {
@@ -389,7 +389,7 @@ body {
 }
 
 .instructor {
-  @include flexColumn(20px, center);
+  @include flexColumn($gap20, center);
 
   margin: 50px 20px;
   @include Bigger($tablet) {
@@ -401,7 +401,7 @@ body {
     margin: 80px 200px;
   }
   .gauche-instructor {
-    @include flexColumn(20px, flex-start);
+    @include flexColumn($gap20, flex-start);
     width: 100%;
     @include Bigger($tablet) {
       width: 70%;
@@ -414,14 +414,14 @@ body {
       }
     }
     .description {
-      @include description(#767376);
+      @include description($textGrey);
       max-width: 100%;
       @include Bigger($tablet) {
         max-width: 70%;
       }
     }
     .listes {
-      @include flexCenter(30px);
+      @include flexCenter($gap30);
       margin-left: 25px;
       .liste {
         @include description(black);
@@ -432,7 +432,7 @@ body {
             @include absolute(50%, -20px, 0px, 0px, 1);
             padding: 4px;
             border-radius: 99999px;
-            background: rgb(171 108 225);
+            background: $primary;
             height: 4px;
             width: 4px;
             transform: translateY(-50%);
@@ -455,14 +455,9 @@ body {
   }
 }
 .background {
-  background: linear-gradient(
-    160deg,
-    rgb(182 113 248),
-    #e780b5,
-    rgb(182 113 248)
-  );
+  background: linear-gradient(160deg, $primary, $secondary, $primary);
   .testimonials {
-    @include flexColumn(30px, center);
+    @include flexColumn($gap30, center);
 
     padding: 80px 20px 0px 20px;
     @include Bigger($tablet) {
@@ -485,24 +480,24 @@ body {
       }
     }
     .container-card {
-      @include flexColumn(30px, center);
+      @include flexColumn($gap30, center);
       @include Bigger($tablet) {
         flex-direction: row;
       }
       .card {
-        @include flexColumn(20px, left);
+        @include flexColumn($gap20, left);
         flex: 1;
         background: white;
         padding: 20px;
         border-radius: 16px;
 
         .top-card {
-          @include flexCenter(20px);
+          @include flexCenter($gap20);
           & img {
             width: 50px;
           }
           .notes {
-            @include flexCenter(20px);
+            @include flexCenter($gap20);
             & img {
               width: 50px;
             }
@@ -512,7 +507,7 @@ body {
             .name {
               font-size: 1rem;
               font-family: PoppinsSemiBold;
-              color: rgb(182 113 248);
+              color: $primary;
             }
             .work {
               font-size: 0.8rem;
@@ -527,7 +522,7 @@ body {
       }
     }
     .slider {
-      @include flexCenter(20px);
+      @include flexCenter($gap20);
       margin: 40px;
       & img {
         width: 20px;
@@ -574,7 +569,7 @@ body {
         }
         .mail {
           margin-top: 20px;
-          @include flexCenter(20px);
+          @include flexCenter($gap20);
           justify-content: center;
           width: 100%;
 
